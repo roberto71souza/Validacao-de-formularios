@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(36, 173, 167),
+    rgb(171, 53, 207)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.content {
+  background-color: white;
+  padding: 50px;
+  display: flex;
+  min-width: 800px;
+  min-height: 500px;
+  border-radius: 50px;
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+form > h1 {
+  color: purple;
+  text-align: center;
+}
+
+form > p {
+  text-align: center;
+  color: rgb(36, 173, 167);
+}
+
+form > p > a {
+  color: purple;
+}
+
+form > input {
+  font-size: 16px;
+  border: 1px solid purple;
+  padding: 15px;
+  border-radius: 50px;
+  margin: 15px 0px;
+  color: rgba(134, 1, 134, 0.6);
+}
+
+form > input::placeholder {
+  font-size: 16px;
+  color: rgba(134, 1, 134, 0.6);
+}
+
+form > input:focus {
+  outline: none;
+  border: 1px solid rgb(36, 173, 167);
+  color: purple;
+}
+
+form > button {
+  background-color: rgb(36, 173, 167);
+  color: rgb(255, 255, 255);
+  padding: 15px;
+  margin: 15px 0px;
+}
+
+form > button:hover {
+  transition: 1s;
+  background-color: purple;
+}
+
+img {
+  max-width: 400px;
+}
