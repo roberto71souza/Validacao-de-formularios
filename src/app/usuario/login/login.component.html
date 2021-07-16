@@ -1,9 +1,34 @@
 <div class="content">
-  <form>
+  <form [formGroup]="form">
     <h1>Login</h1>
-    <input type="email" placeholder="Email"/>
-    <input type="password" placeholder="Senha"/>
-    <button>Logar</button>
+    <div class="row">
+      <input
+        type="email"
+        [ngClass]="validaControle(formControl.login)"
+        formControlName="login"
+        placeholder="Email"
+      />
+
+      <div *ngIf="formControl.login.errors?.required" class="msg-invalid">
+        Digite seu Login
+      </div>
+      <div *ngIf="formControl.login.errors?.email" class="msg-invalid">
+        Login Incorreto
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="password"
+        [ngClass]="validaControle(formControl.senha)"
+        formControlName="senha"
+        placeholder="Senha"
+      />
+      <div *ngIf="formControl.senha.errors?.required" class="msg-invalid">
+        Digite sua senha
+      </div>
+    </div>
+
+    <button [disabled]="!form.valid" (click)="logar()">Logar</button>
     <p>Não tem cadastro <a routerLink="/registro">clique aqui</a>.</p>
   </form>
   <img src="assets/img2.jpg" alt="" />

@@ -16,20 +16,41 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.invalid ~ .msg-invalid {
+  display: block;
+}
+
+.msg-invalid {
+  display: none;
+  color: rgb(36, 173, 167);
 }
 
 .content {
   background-color: white;
+  max-width: 850px;
+  max-height: auto;
+  border-radius: 50px;
   padding: 50px;
   display: flex;
-  min-width: 800px;
-  min-height: 500px;
-  border-radius: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content > img {
+  max-width: 460px;
+}
+
+form > .row > input.invalid,
+form > .row > input:invalid {
+  color: red;
 }
 
 form {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -48,7 +69,7 @@ form > p > a {
   color: purple;
 }
 
-form > input {
+form > .row > input {
   font-size: 16px;
   border: 1px solid purple;
   padding: 15px;
@@ -57,18 +78,23 @@ form > input {
   color: rgba(134, 1, 134, 0.6);
 }
 
-form > input::placeholder {
+form > .row > input::placeholder {
   font-size: 16px;
   color: rgba(134, 1, 134, 0.6);
 }
 
-form > input:focus {
+form > .row > input:focus {
   outline: none;
   border: 1px solid rgb(36, 173, 167);
   color: purple;
 }
 
+form > .row > .imgErro {
+  max-width: 25px;
+}
+
 form > button {
+  max-width: 280px;
   background-color: rgb(36, 173, 167);
   color: rgb(255, 255, 255);
   padding: 15px;
@@ -80,6 +106,56 @@ form > button:hover {
   background-color: purple;
 }
 
-img {
-  max-width: 400px;
+@media (max-width: 800px) {
+  .content {
+    padding: 20px;
+    min-width: 500px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content > img {
+    max-width: 320px;
+  }
+
+  form {
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    padding: 10px;
+  }
+
+  .content {
+    padding: 5px;
+    min-width: 320px;
+  }
+  .content > img {
+    display: none;
+  }
+
+  form {
+    max-width: 90%;
+    padding: 20px 0px;
+  }
+
+  form > h1 {
+    margin-bottom: 10px;
+  }
+
+  form > .row > input {
+    padding: 15px;
+    margin: 10px 0px;
+  }
+
+  form > .row > button {
+    margin: 10px 0px;
+    font-size: 15px;
+  }
+
+  form > .row > .imgErro {
+    max-width: 18px;
+  }
 }

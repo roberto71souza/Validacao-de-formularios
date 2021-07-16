@@ -1,12 +1,109 @@
 <div class="content">
-  <form action="">
-    <h1>Registrar-se</h1>
-    <input type="text" placeholder="Seu nome"/>
-    <input type="email" placeholder="Email"/>
-    <input type="tel" placeholder="telefone"/>
-    <input type="password" placeholder="Senha"/>
-    <input type="password" placeholder="Confirme a senha"/>
-    <button>Registrar</button>
+  <form [formGroup]="form">
+    <h1>Registrar</h1>
+    <div class="row">
+      <input
+        type="text"
+        [ngClass]="validaControle(formControl.nome)"
+        formControlName="nome"
+        placeholder="Seu nome"
+      />
+      <img
+        class="imgErro"
+        *ngIf="formControl.nome.errors && formControl.nome.touched"
+        src="assets/error.png"
+        alt=""
+      />
+      <div *ngIf="formControl.nome.errors?.required" class="msg-invalid">
+        Nome e requerido
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="email"
+        [ngClass]="validaControle(formControl.email)"
+        formControlName="email"
+        placeholder="E-mail"
+      />
+      <img
+        class="imgErro"
+        *ngIf="formControl.email.errors && formControl.email.touched"
+        src="assets/error.png"
+        alt=""
+      />
+      <div *ngIf="formControl.email.errors?.required" class="msg-invalid">
+        E-mail e requerido
+      </div>
+      <div *ngIf="formControl.email.errors?.email" class="msg-invalid">
+        E-mail invalido
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="text"
+        [ngClass]="validaControle(formControl.telefone)"
+        formControlName="telefone"
+        placeholder="telefone"
+      />
+      <img
+        class="imgErro"
+        *ngIf="formControl.telefone.errors && formControl.telefone.touched"
+        src="assets/error.png"
+        alt=""
+      />
+      <div *ngIf="formControl.telefone.errors?.required" class="msg-invalid">
+        Telefone e requerido
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="password"
+        [ngClass]="validaControle(formControl.senha)"
+        formControlName="senha"
+        placeholder="Senha"
+      />
+      <img
+        class="imgErro"
+        *ngIf="formControl.senha.errors && formControl.senha.touched"
+        src="assets/error.png"
+        alt=""
+      />
+      <div *ngIf="formControl.senha.errors?.required" class="msg-invalid">
+        Senha e requerido
+      </div>
+      <div *ngIf="formControl.senha.errors?.minlength" class="msg-invalid">
+        Senha deve ter no minimo 5 caracteres
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="password"
+        [ngClass]="validaControle(formControl.confirmSenha)"
+        formControlName="confirmSenha"
+        placeholder="Confirme a senha"
+      />
+      <img
+        class="imgErro"
+        *ngIf="
+          formControl.confirmSenha.errors && formControl.confirmSenha.touched
+        "
+        src="assets/error.png"
+        alt=""
+      />
+      <div
+        *ngIf="formControl.confirmSenha.errors?.required"
+        class="msg-invalid"
+      >
+        Confirmar senha e requerido
+      </div>
+      <div
+        *ngIf="formControl.confirmSenha.errors?.senhasBatem"
+        class="msg-invalid"
+      >
+        Senhas nao batem
+      </div>
+    </div>
+    <button [disabled]="!form.valid" (click)="registrar()">Registrar</button>
     <p>Tem cadastro? <a routerLink="/login">clique aqui</a>.</p>
   </form>
   <img src="assets/img5.jpg" alt="" />
